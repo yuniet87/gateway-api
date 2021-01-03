@@ -6,7 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     GatewayModule,
-    MongooseModule.forRoot('mongodb://localhost/gateway', {
+    MongooseModule.forRoot(process.env.MONGODB, {
       useFindAndModify: false,
     }),
   ],

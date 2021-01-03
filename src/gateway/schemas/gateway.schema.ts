@@ -1,8 +1,15 @@
 import { Schema } from 'mongoose';
 
 export const GatewaySchema = new Schema({
-  serialNumber: String,
+  serialNumber: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   hrName: String,
-  ipAddress: String,
+  ipAddress: {
+    type: String,
+    required: true,
+  },
   devices: [Schema.Types.ObjectId],
 });
