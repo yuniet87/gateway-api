@@ -1,6 +1,21 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { IsDateString, IsNotEmpty } from 'class-validator';
+
 export class CreateDeviceDTO {
-  readonly uid: number;
+  @ApiProperty({
+    title: 'Device Vendor',
+  })
+  @IsNotEmpty()
   readonly vendor: string;
+
+  @ApiProperty({
+    title: 'Created Date',
+  })
+  @IsDateString()
   readonly createdDate: Date;
+
+  @ApiProperty({
+    title: 'Device status online',
+  })
   readonly isOnline: boolean;
 }

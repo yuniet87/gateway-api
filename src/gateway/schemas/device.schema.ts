@@ -1,11 +1,11 @@
 import { Schema } from 'mongoose';
 
 export const DeviceSchema = new Schema({
-  uid: {
-    type: Number,
+  vendor: {
+    type: String,
     required: true,
+    maxlength: 1,
   },
-  vendor: String,
   createdDate: {
     type: Date,
     default: Date.now,

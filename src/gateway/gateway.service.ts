@@ -6,26 +6,25 @@ import { CreateGatewayDTO } from './dto/gateway.dto';
 
 @Injectable()
 export class GatewayService {
-  constructor(@InjectModel('Gateway') readonly gatewayModel: Model<Gateway>) {}
+  constructor(
+    @InjectModel('Gateway') private readonly gatewayModel: Model<Gateway>,
+  ) {}
 
   async getGateways(): Promise<Gateway[]> {
-    const gateways = await this.gatewayModel.find();
+    const gateways = await this.gatewayModel.find().populate('devicesIDs');
     return gateways;
   }
 
   async getGateway(gatewayID: string): Promise<Gateway> {
-    const gateway = await this.gatewayModel.findById(gatewayID);
+    const gateway = await this.gatewayModel
+      .findById(gatewayID)
+      .populate('devicesIDs');
     return gateway;
   }
 
   async createGateway(createGatewayDTO: CreateGatewayDTO): Promise<Gateway> {
     const gateway = new this.gatewayModel(createGatewayDTO);
     return await gateway.save();
-  }
-
-  async deleteGateway(gatewayID: string): Promise<Gateway> {
-    const deletedGateway = await this.gatewayModel.findByIdAndDelete(gatewayID);
-    return deletedGateway;
   }
 
   async updateGateway(
@@ -38,5 +37,10 @@ export class GatewayService {
       { new: true },
     );
     return updatedGateway;
+  }
+
+  async deleteGateway(gatewayID: string): Promise<Gateway> {
+    const deletedGateway = await this.gatewayModel.findByIdAndDelete(gatewayID);
+    return deletedGateway;
   }
 }

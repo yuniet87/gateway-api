@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import * as beautifyUnique from 'mongoose-beautiful-unique-validation';
 
 export const GatewaySchema = new Schema({
   serialNumber: {
@@ -6,10 +7,22 @@ export const GatewaySchema = new Schema({
     required: true,
     unique: true,
   },
-  hrName: String,
+  hrName: {
+    type: String,
+    required: true,
+  },
   ipAddress: {
     type: String,
     required: true,
   },
-  devices: [Schema.Types.ObjectId],
+  devicesIDs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Device',
+    },
+  ],
+});
+
+GatewaySchema.plugin(beautifyUnique, {
+  defaultMessage: 'Two gateways cannot share the same Serial Number ({VALUE})',
 });

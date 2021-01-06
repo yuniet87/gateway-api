@@ -1,0 +1,16 @@
+###Get All
+GET http://localhost:5000/gateway HTTP/1.1
+
+###Get one
+GET http://localhost:5000/gateway/5fed02300847965cb0f0c294 HTTP/1.1
+
+###Add gateway
+POST http://localhost:5000/gateway/create HTTP/1.1
+Content-Type: : application/json
+
+{
+    "serialNumber": "1n881--asd8al22-1271-1",
+    "hrName": "Pipe",
+    "ipAddress": "192.192.56.12",
+    "devices": []
+}
