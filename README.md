@@ -22,9 +22,13 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
+## Prerequisites
+
+1. MongoDB: **v3.6.3** or higher
 
 ## Installation
 
@@ -45,7 +49,13 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Usage
+
+Once the app is runnning a `Swagger` service will start at (<http://localhost:3000/api>).
+
+There is the description of the `RESTService`.
+
+## Test (TODO)
 
 ```bash
 # unit tests
